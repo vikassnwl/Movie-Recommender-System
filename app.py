@@ -6,7 +6,7 @@ import gzip
 
 
 def load_similarity():
-    with gzip.open("artifacts/similarity.pkl.gz", "rb") as f:
+    with gzip.open("assets/artifacts/similarity.pkl.gz", "rb") as f:
         similarity_matrix = joblib.load(f)
     return similarity_matrix
 
@@ -22,7 +22,7 @@ def fetch_poster(movie_id):
     return "https://image.tmdb.org/t/p/w500" + data["poster_path"]
 
 
-new_df = joblib.load("artifacts/movies.pkl")
+new_df = joblib.load("assets/artifacts/movies.pkl")
 similarity = load_similarity()
 
 
