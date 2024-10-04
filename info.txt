@@ -1,0 +1,5 @@
+Types of recommender systems:
+1. Content based (based on content/tags similarity)
+2. Collaborative filtering based (based on user interest)
+3. Hybrid
+
