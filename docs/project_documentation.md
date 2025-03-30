@@ -58,17 +58,18 @@ It includes, but is not limited to, the following operations:
 	- `crew`
 	- `movie_id` (for fetching movie poster via TMDB API and showing on the frontend)
 	- `title`
-3. Extracted only the genre names from the `genres` columns which consisted other data as well which was redundant for our purpose. Such as genre id.
-4. Same was done with the `keywords` column as well.
-5. Extracted first 3 cast names from the `cast` column.
-6. Extracted director name from the `crew` column.
-7. Split words based on space character from `overview` column in order to merge it with `genres`, `keywords`, `cast` and `crew` columns.
-8. Named the merged column `tags`.
-9. Joined the words in `tags` column with space character and made them lowercase.
-10. Selected only the `movie_id`, `title` and `tags` columns for the final DataFrame.
-11. Applied tokenization using regex pattern in order to extract words/tokens by ignoring the punctuation in the `tags` column.
-12. Ignored stop words and Applied stemming to the tokens.
-13. Applied `CountVectorizer` (BoW) to convert each list of tokens into a vector for each movie.
+3. Dropped rows having null values.
+4. Extracted only the genre names from the `genres` column which consisted other data as well which was redundant for our purpose. Such as genre id. Also removed the space between genre name such as "Science Fiction" became "ScienceFiction".
+5. Same was done with the `keywords` column as well.
+6. Extracted first 3 cast names from the `cast` column.
+7. Extracted director name from the `crew` column.
+8. Split words based on space character from `overview` column in order to merge it with `genres`, `keywords`, `cast` and `crew` columns.
+9. Named the merged column `tags`.
+10. Joined the words in `tags` column with space character and made them lowercase.
+11. Selected only the `movie_id`, `title` and `tags` columns for the final DataFrame.
+12. Applied tokenization using regex pattern in order to extract words/tokens from the `tags` column. The pattern ignores the punctuation as they are not words.
+13. Ignored stop words and Applied stemming to the tokens.
+14. Applied `CountVectorizer` (BoW) to convert each list of tokens into a vector for each movie.
 
 
 # 3. Similarity Score Calculation
@@ -87,4 +88,4 @@ The function works as follows:
 3. Selects the row present at movie_index in the similarity matrix.
 4. Pairs each similarity score in the selected row with its corresponding movie index.
 5. Sorts the row based on similarity score in descending order and selects top 5 similarity scores along with movie indices.
-6. Uses these movie indices to retrieve the movie names from the DataFrame and returns them.
+6. Uses these movie indices to retrieve the movie names from the DataFrame and prints them.
