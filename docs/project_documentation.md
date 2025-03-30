@@ -1,3 +1,4 @@
+[Project Implementation Notebook](https://github.com/vikassnwl/Movie-Recommender-System/blob/main/notebooks/tokenize_using_regex.ipynb)
 # 1. Data Collection
 
 ### Data Source
@@ -67,8 +68,8 @@ It includes, but is not limited to, the following operations:
 9. Named the merged column `tags`.
 10. Joined the words in `tags` column with space character and made them lowercase.
 11. Selected only the `movie_id`, `title` and `tags` columns for the final DataFrame.
-12. Applied tokenization using regex pattern in order to extract words/tokens from the `tags` column. The pattern ignores the punctuation as they are not words.
-13. Ignored stop words and Applied stemming to the tokens.
+12. Applied tokenization using regex pattern in order to extract words/tokens from the `tags` column. The pattern ignores the punctuation and it treats contractions (you're, we'll, you've...) as a single word/token.
+13. Ignored stop words (i, am , was, you're, you've...) and Applied stemming to the tokens.
 14. Applied `CountVectorizer` (BoW) to convert each list of tokens into a vector for each movie.
 
 
